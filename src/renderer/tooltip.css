@@ -1,0 +1,8 @@
+.metric { position: relative; }
+.providers { overflow: visible; }
+.reset-tooltip { position: absolute !important; z-index: 5; left: 50%; bottom: calc(100% + 9px); width: max-content; max-width: 190px; padding: 7px 9px; border: 1px solid var(--line); border-radius: 7px; color: var(--text); background: color-mix(in srgb, Canvas 94%, transparent); box-shadow: 0 7px 22px #0004; font-size: 9px !important; line-height: 1.2; opacity: 0; pointer-events: none; transform: translate(-50%, 4px); transition: opacity .14s, transform .14s; }
+.reset-tooltip::after { content: ""; position: absolute; left: calc(50% - 4px); bottom: -4px; width: 7px; height: 7px; transform: rotate(45deg); background: inherit; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.metric:hover .reset-tooltip, .metric:focus-visible .reset-tooltip { opacity: 1; transform: translate(-50%, 0); }
+.metrics .metric:first-child .reset-tooltip { left: 0; transform: translate(0, 4px); }
+.metrics .metric:first-child:hover .reset-tooltip, .metrics .metric:first-child:focus-visible .reset-tooltip { transform: translate(0, 0); }
+.metrics .metric:first-child .reset-tooltip::after { left: 29px; }

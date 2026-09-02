@@ -1,0 +1,31 @@
+appId: com.limia.desktop
+productName: Limia
+directories:
+  output: release
+files:
+  - dist/**/*
+  - package.json
+asar: true
+extraResources:
+  - from: bloub-hexagone-attentif-encre.png
+    to: limia.png
+mac:
+  icon: bloub-hexagone-attentif-encre.png
+  category: public.app-category.developer-tools
+  target:
+    - dmg
+    - zip
+  artifactName: Limia-${version}-${arch}.${ext}
+win:
+  icon: bloub-hexagone-attentif-encre.png
+  target:
+    - nsis
+    - portable
+nsis:
+  artifactName: Limia-${version}-${arch}-setup.${ext}
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+portable:
+  artifactName: Limia-${version}-${arch}-portable.${ext}
