@@ -6,10 +6,12 @@ files:
   - dist/**/*
   - package.json
 asar: true
+afterPack: scripts/after-pack.cjs
 extraResources:
   - from: bloub-hexagone-attentif-encre.png
     to: limia.png
 mac:
+  identity: null
   icon: bloub-hexagone-attentif-encre.png
   category: public.app-category.developer-tools
   target:
