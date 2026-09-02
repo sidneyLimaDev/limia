@@ -39,12 +39,14 @@ Published installers are available on the [GitHub Releases](https://github.com/s
 
 To publish version `0.1.0`, create and push the tag `v0.1.0`. GitHub Actions will build both platforms and attach the files to the release automatically.
 
-The macOS workflow signs and notarizes the app. Configure these GitHub Actions secrets before publishing:
+The macOS workflow creates an unsigned DMG for direct download; it does not use the Apple App Store or Apple signing secrets. Because the downloaded app is unsigned, macOS requires a manual approval after installation:
 
-- `CSC_LINK`: base64-encoded Developer ID Application `.p12` certificate
-- `CSC_KEY_PASSWORD`: password for the `.p12` certificate
-- `APPLE_ID`: Apple Developer account email
-- `APPLE_APP_SPECIFIC_PASSWORD`: app-specific password for notarization
-- `APPLE_TEAM_ID`: Apple Developer Team ID
+1. Open the DMG and drag `Limia` to `Applications`.
+2. In Finder, right-click `Limia.app` and choose `Open`.
+3. Confirm with `Open` in the security dialog.
 
-The certificate must be exported from Keychain Access with the `Developer ID Application` identity. Without these secrets, macOS may report that the downloaded app is damaged.
+If macOS still blocks the app, remove the download quarantine with:
+
+```sh
+xattr -dr com.apple.quarantine "/Applications/Limia.app"
+```
